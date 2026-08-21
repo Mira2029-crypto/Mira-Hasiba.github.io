@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mira Hasiba — Projects</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo">Mira Hasiba</h1>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <div class="nav-dropdown">
+            <button type="button" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="project-menu">
+              My Projects
+              <span class="dropdown-icon">▾</span>
+            </button>
+            <div id="project-menu" class="dropdown-menu" role="menu" aria-label="Project selector">
+              <a class="dropdown-item" href="engineering.html#project-1" role="menuitem">StepBuddy</a>
+              <a class="dropdown-item" href="engineering.html#project-2" role="menuitem">PillPal</a>
+            </div>
+          </div>
+          <a href="about.html">Who I Am</a>
+          <a href="resume.html">Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-band">
+        <div id="about" class="container hero">
+          <div class="hero-text">
+            <h2>Mira Hasiba</h2>
+            <p class="lead">Electrical Engineering Portfolio</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-band">
+        <div id="who-i-am" class="container contact">
+          <h2>About Me</h2>
+          <div class="about-grid">
+            <div class="about-photo">
+              <img src="assets/css/mira1.jpeg" alt="Mira Hasiba">
+            </div>
+            <div class="about-text">
+              <p>Hi! My name is Mira Hasiba, and I'm a second year Electrical Engineering student at Northwestern University. I'm interested in hands on experiences in robotics and embedded systems. I enjoy learning about the different ways technology can be used to benefit the lives of individuals in meaningful ways. This portfolio highlights various projects I've worked on throughout my time at Northwestern in clubs, classes, and at home.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <h3 class="footer-heading">Get in touch</h3>
+        <div class="footer-links" aria-label="Contact links">
+          <div class="contact-item">
+            <a href="https://www.linkedin.com/in/mira-hasiba" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Visit Mira on LinkedIn">
+              <span class="contact-icon" aria-hidden="true">in</span>
+            </a>
+            <a href="https://www.linkedin.com/in/mira-hasiba" target="_blank" rel="noopener noreferrer" class="contact-text-link" aria-label="Open Mira's LinkedIn profile">
+              <span class="contact-title">LinkedIn</span>
+              <span class="contact-detail">linkedin.com/in/mira-hasiba</span>
+            </a>
+          </div>
+          <div class="contact-item">
+            <a href="mailto:mirahasiba2029@u.northwestern.edu" class="contact-link" aria-label="Email Mira">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="contact-icon email-icon">
+                <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm1 2v.2l7 4.7 7-4.7V8H5Zm14 8V10.3l-6.2 4.1a1 1 0 0 1-1.1 0L5 10.3V16h14Z"/>
+              </svg>
+            </a>
+            <a href="mailto:mirahasiba2029@u.northwestern.edu" class="contact-text-link" aria-label="Send Mira an email">
+              <span class="contact-title">Gmail</span>
+              <span class="contact-detail">mirahasiba2029@u.northwestern.edu</span>
+            </a>
+          </div>
+        </div>
+        <div>© <span id="year"></span> Mira Hasiba</div>
+      </div>
+    </footer>
+
+    <script>
+      const dropdownTrigger = document.querySelector('.dropdown-trigger');
+      const dropdownMenu = document.getElementById('project-menu');
+
+      dropdownTrigger.addEventListener('click', () => {
+        const isOpen = dropdownMenu.style.display === 'block';
+        dropdownMenu.style.display = isOpen ? 'none' : 'block';
+        dropdownTrigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      document.addEventListener('click', event => {
+        if (!event.target.closest('.nav-dropdown')) {
+          dropdownMenu.style.display = 'none';
+          dropdownTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
