@@ -81,6 +81,11 @@
                 <div class="research-image-slot"><img src="assets/css/NSCOpe.jpeg" alt="Buffer op-amp schematic"><span class="research-image-label">Buffer op-amp schematic</span></div>
                 <div class="research-image-slot"><img src="assets/css/AD.jpeg" alt="Current ADC and MCU schematic"><span class="research-image-label">Current ADC + MCU schematic</span></div>
               </div>
+              <p>Soon after testing the ADC, I realized it couldn’t capture the peaks of the RC circuit’s response. The AD7734 I had at that point has a maximum output rate of about 15.4 kHz, which is too slow for a system running at 20 kHz. To capture the signal, I added an integrator after the buffer. It integrates the signal and holds a steady voltage for part of each cycle, until the capacitor switches from charging to discharging, which gives the ADC time to sample. I also replaced the ADC with the ADS8910, which samples at 1 MSPS.</p>
+              <div class="research-image-slots research-image-slots--pair" aria-label="Current circuit schematics">
+                <div class="research-image-slot"><img src="assets/css/IMG_0967.jpg" alt="Op amp circuit schematic"><span class="research-image-label">Op amp circuit schematic</span></div>
+                <div class="research-image-slot"><img src="assets/css/IMG_0964.jpg" alt="Full circuit schematic"><span class="research-image-label">Full circuit schematic</span></div>
+              </div>
             </section>
           </div>
         </article>
