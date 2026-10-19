@@ -18,8 +18,9 @@
               <span class="dropdown-icon">▾</span>
             </button>
             <div id="project-menu" class="dropdown-menu" role="menu" aria-label="Project selector">
-              <button type="button" class="dropdown-item active" data-project="project-1">StepBuddy</button>
-              <button type="button" class="dropdown-item" data-project="project-2">PillPal</button>
+              <button type="button" class="dropdown-item active" data-project="project-1">Baja SAE - DAQ</button>
+              <button type="button" class="dropdown-item" data-project="project-2">StepBuddy</button>
+              <button type="button" class="dropdown-item" data-project="project-3">PillPal</button>
             </div>
           </div>
           <a href="research.html">Research</a>
@@ -33,6 +34,67 @@
       <section class="container">
         <div class="project-grid">
           <article id="project-1" class="project-card active">
+            <div class="stepbuddy-hero">
+              <h2 class="research-title">Baja SAE - DAQ</h2>
+              <p class="research-subtitle">Baja SAE</p>
+            </div>
+            <div class="project-content">
+              <section class="project-section">
+                <h4>Overview</h4>
+                <p>The Northwestern Baja electronics subteam was founded during the 2025–2026 academic year. As a relatively new team, we have many opportunities to improve the car’s data acquisition (DAQ) system for this year’s competition. One major change is that the work has been divided into two projects: Back DAQ and Front DAQ/HUD. I have been working on the Front DAQ/HUD.</p>
+              </section>
+              <section class="project-section">
+                <h4>DAQ System</h4>
+                <p>This year, our goal is to embed the HUD screen in the Baja car’s steering wheel, making it easy for the driver to view while keeping it from obstructing their vision. We are also adding GPS and radio modules so the vehicle can be tracked and can transmit data over long distances to team members waiting in the pits.</p>
+              </section>
+              <section class="project-section">
+                <h4>Design and Implementation</h4>
+                <p>This project is expected to be completed in May 2027.</p>
+                <p>Throughout the summer, I focused on selecting a radio, GPS module, shock sensors, and a screen for the Front DAQ. We are also using the same method as last year to measure wheel speed: Hall effect sensors determine the wheels’ revolutions per minute. In addition, the car will use the same power circuitry and a CAN system that is consistent across all of its PCBs this year.</p>
+                <div class="project-subsection">
+                  <h5>GPS</h5>
+                  <p>A main goal of the DAQ is to provide live GPS tracking of the new vehicle, allowing the team to monitor it during a race and locate it if it breaks down out of sight. This summer, I evaluated GPS modules against four constraints:</p>
+                  <ul>
+                    <li><strong>Precision:</strong> Accurate enough to provide useful position tracking.</li>
+                    <li><strong>Connection:</strong> Reliable over long distances and in rough terrain.</li>
+                    <li><strong>Pin count:</strong> Uses as few ESP32 pins as possible, since GPIO is limited.</li>
+                    <li><strong>Size:</strong> Small enough to fit on the 68.5 mm × 83 mm steering wheel PCB.</li>
+                  </ul>
+                  <p>After comparing several options, I chose the <a href="https://www.sparkfun.com/sparkfun-gnss-l1-l5-breakout-neo-f10n-sma.html#content-recommended-products" target="_blank" rel="noopener noreferrer">SparkFun GNSS L1/L5 Breakout - NEO-F10N, SMA</a>. Three features set it apart from the other modules I considered:</p>
+                  <ul>
+                    <li><strong>Dual-band (L1/L5) reception:</strong> The receiver can combine signals from both bands to reduce multipath error and provide meter-level positional accuracy, even in urban areas or under tree cover.</li>
+                    <li><strong>Multi-constellation support:</strong> It tracks GPS, Galileo, and BeiDou, making more satellites available in challenging conditions.</li>
+                    <li><strong>Low pin usage:</strong> It communicates over UART and requires four connections total; power, ground, TX, and RX, only two of which use ESP32 GPIO pins.</li>
+                  </ul>
+                  <p>The module also starts quickly, with a cold-start time of about 28 seconds and a hot-start time of about 2 seconds, thanks to its onboard RTC backup battery.</p>
+                </div>
+                <div class="project-subsection">
+                  <h5>Radio</h5>
+                  <p>The other major addition to this year’s DAQ is a radio transceiver that sends data back to the team in real time. This lets us analyze the car’s data while it’s running and pinpoint what’s failing, so other subteams can fix problems based on data instead of guesswork.</p>
+                  <p>I chose the <a href="https://www.adafruit.com/product/3072" target="_blank" rel="noopener noreferrer">Adafruit RFM95W LoRa Radio Transceiver</a> at 915 MHz, the license-free band in the US. Adafruit rates it for over 2 km with line of sight and a simple wire antenna, and up to 20 km with directional antennas and tuning, which is more than we will need during our races.</p>
+                  <p>Tradeoff: the module uses SPI, which is fast and well supported, but it takes several pins to use.</p>
+                </div>
+                <div class="project-subsection">
+                  <h5>Shocks</h5>
+                  <p>This is the first year our team is implementing suspension sensing. My teammates and I researched how other Baja SAE teams approached it at past competitions, compared several options, and settled on linear potentiometers mounted to the shocks. They measure how far each shock compresses during a race, giving us real-time data on how the suspension handles jumps and rough terrain to verify that everything works as designed.</p>
+                </div>
+                <div class="project-subsection">
+                  <h5>HUD</h5>
+                  <p>Alongside the DAQ, we’re adding a 2.43-inch OLED display that shows key data to the driver in real time, including fuel level from the Back DAQ and wheel speed, with room for more features later in the year. It mounts in the steering wheel, so it doesn’t block the driver’s view of the course.</p>
+                </div>
+              </section>
+              <section class="project-section">
+                <h4>Results</h4>
+                <p>The PCB has been designed, as shown below, but has not yet been ordered or tested.</p>
+                <figure class="research-image-slots research-image-figure baja-pcb-figure">
+                  <img src="assets/css/Screenshot 2026-10-19 015704.png" alt="Baja Front DAQ PCB design">
+                  <figcaption>Current PCB design for Front DAQ/HUD</figcaption>
+                </figure>
+              </section>
+            </div>
+          </article>
+
+          <article id="project-2" class="project-card">
             <div class="stepbuddy-hero">
               <p class="eyebrow">Featured project</p>
               <h3 class="stepbuddy-title">StepBuddy</h3>
@@ -100,7 +162,7 @@
             </div>
           </article>
 
-          <article id="project-2" class="project-card">
+          <article id="project-3" class="project-card">
             <div class="stepbuddy-hero">
               <p class="eyebrow">Featured project</p>
               <h3 class="stepbuddy-title">PillPal</h3>
@@ -231,6 +293,11 @@
         dropdownMenu.style.display = 'none';
       };
 
+      const initialProject = window.location.hash.slice(1);
+      if (document.getElementById(initialProject)?.classList.contains('project-card')) {
+        setActiveProject(initialProject);
+      }
+
       dropdownTrigger.addEventListener('click', () => {
         const isOpen = dropdownMenu.style.display === 'block';
         dropdownMenu.style.display = isOpen ? 'none' : 'block';
@@ -239,6 +306,13 @@
 
       dropdownItems.forEach(item => {
         item.addEventListener('click', () => setActiveProject(item.dataset.project));
+      });
+
+      window.addEventListener('hashchange', () => {
+        const projectId = window.location.hash.slice(1);
+        if (document.getElementById(projectId)?.classList.contains('project-card')) {
+          setActiveProject(projectId);
+        }
       });
 
       document.addEventListener('click', event => {
