@@ -121,7 +121,7 @@ h1,h2,h3,h4{color:var(--accent-strong)}
 .research-image-figure .research-image-slot img,.research-image-slots--pair .research-image-slot img{width:auto;max-width:100%;height:auto;max-height:400px;margin:0 auto;object-fit:contain}
 .research-image-label{color:var(--muted);font-size:0.9rem;text-align:center}
 .research-image-figure{display:block;margin:18px auto;max-width:820px;text-align:center}
-.baja-pcb-figure{max-width:560px}
+.baja-pcb-figure{max-width:380px}
 .research-image-figure img{display:block;width:100%;height:auto;border-radius:14px}
 .research-image-figure figcaption{margin-top:10px;color:var(--muted);font-size:0.9rem}
 .research-image-figure figcaption a{color:var(--accent-strong);font-weight:700}
